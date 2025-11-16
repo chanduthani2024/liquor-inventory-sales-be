@@ -38,6 +38,9 @@ exports.AppModule = AppModule = __decorate([
                 database: process.env.DB_NAME || 'postgres',
                 autoLoadEntities: true,
                 synchronize: true,
+                ssl: {
+                    rejectUnauthorized: false,
+                },
             }),
             brands_module_1.BrandsModule,
             stock_module_1.StockModule,

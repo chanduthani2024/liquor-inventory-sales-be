@@ -26,6 +26,9 @@ import { PdfImportModule } from './pdf-import/pdf-import.module';
       database: process.env.DB_NAME || 'postgres',
       autoLoadEntities: true,
       synchronize: true, // Set to false in production
+      ssl: {
+        rejectUnauthorized: false,
+      },
     }),
     BrandsModule,
     StockModule,

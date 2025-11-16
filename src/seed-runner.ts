@@ -15,6 +15,9 @@ const AppDataSource = new DataSource({
   database: process.env.DB_NAME || 'postgres',
   entities: [Brand, Stock, Sale, SaleItem, User],
   synchronize: true,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 async function runSeed() {

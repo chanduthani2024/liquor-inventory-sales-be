@@ -16,6 +16,9 @@ const AppDataSource = new typeorm_1.DataSource({
     database: process.env.DB_NAME || 'postgres',
     entities: [brand_entity_1.Brand, stock_entity_1.Stock, sale_entity_1.Sale, sale_item_entity_1.SaleItem, user_entity_1.User],
     synchronize: true,
+    ssl: {
+        rejectUnauthorized: false,
+    },
 });
 async function runSeed() {
     try {
