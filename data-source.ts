@@ -19,4 +19,11 @@ export const AppDataSource = new DataSource({
   ssl: {
     rejectUnauthorized: false,
   },
+  extra: {
+    // Force IPv4 to avoid IPv6 connection issues
+    family: 4,
+    connectionTimeoutMillis: 10000,
+    query_timeout: 10000,
+    statement_timeout: 10000,
+  },
 });

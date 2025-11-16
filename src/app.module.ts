@@ -29,6 +29,14 @@ import { PdfImportModule } from './pdf-import/pdf-import.module';
       ssl: {
         rejectUnauthorized: false,
       },
+      extra: {
+        // Force IPv4 to avoid IPv6 connection issues
+        family: 4,
+        // Connection timeout settings
+        connectionTimeoutMillis: 10000,
+        query_timeout: 10000,
+        statement_timeout: 10000,
+      },
     }),
     BrandsModule,
     StockModule,
