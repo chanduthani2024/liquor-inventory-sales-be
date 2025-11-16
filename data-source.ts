@@ -7,9 +7,9 @@ import { SaleItem } from './src/sales/sale-item.entity';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: 'db.wbmhdagvgnedroltowfw.supabase.co',
+  host: 'aws-1-ap-south-1.pooler.supabase.com',
   port: 5432,
-  username: 'postgres',
+  username: 'postgres.wbmhdagvgnedroltowfw',
   password: 'Chandu@saicharan@1',
   database: 'postgres',
   entities: [Brand, BrandPriceHistory, Stock, Sale, SaleItem],

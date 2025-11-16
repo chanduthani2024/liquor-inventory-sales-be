@@ -19,9 +19,9 @@ import { PdfImportModule } from './pdf-import/pdf-import.module';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST || 'db.wbmhdagvgnedroltowfw.supabase.co',
+      host: process.env.DB_HOST || 'aws-1-ap-south-1.pooler.supabase.com',
       port: parseInt(process.env.DB_PORT) || 5432,
-      username: process.env.DB_USER || 'postgres',
+      username: process.env.DB_USER || 'postgres.wbmhdagvgnedroltowfw',
       password: process.env.DB_PASSWORD || 'Chandu@saicharan@1',
       database: process.env.DB_NAME || 'postgres',
       autoLoadEntities: true,
