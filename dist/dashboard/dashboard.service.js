@@ -23,7 +23,7 @@ let DashboardService = class DashboardService {
         this.stockMovementsService = stockMovementsService;
     }
     async getDashboardData(startDate, endDate) {
-        const [totalRevenue, totalStockValue, topSellingBrands, salesByBrand, currentStock, totalBrands, lowStockItems,] = await Promise.all([
+        const [totalRevenue, totalStockValue, topSellingBrands, salesByBrand, currentStock, totalBrands, lowStockItems, profitData,] = await Promise.all([
             this.getComprehensiveTotalRevenue(startDate, endDate),
             this.stockService.getTotalStockValue(),
             this.getComprehensiveTopSellingBrands(10, startDate, endDate),
@@ -31,6 +31,7 @@ let DashboardService = class DashboardService {
             this.stockService.findAll(),
             this.brandsService.findAll(),
             this.getLowStockItems(5),
+            this.getProfitData(startDate, endDate),
         ]);
         return {
             summary: {
@@ -39,6 +40,8 @@ let DashboardService = class DashboardService {
                 totalBrands: totalBrands.length,
                 totalStockItems: currentStock.reduce((sum, item) => sum + item.quantity, 0),
                 lowStockCount: lowStockItems.length,
+                totalProfit: profitData.totalProfit,
+                profitMargin: profitData.profitMargin,
             },
             topSellingBrands,
             salesByBrand,
@@ -237,6 +240,32 @@ let DashboardService = class DashboardService {
         }
         return Array.from(brandSizeSalesMap.values())
             .sort((a, b) => parseFloat(b.total_revenue) - parseFloat(a.total_revenue));
+    }
+    async getProfitData(startDate, endDate) {
+        try {
+            const startDateStr = startDate ? startDate.toISOString().split('T')[0] : undefined;
+            const endDateStr = endDate ? endDate.toISOString().split('T')[0] : undefined;
+            console.log('🔍 [Dashboard Service] getProfitData called with:');
+            console.log('   Original startDate:', startDate);
+            console.log('   Original endDate:', endDate);
+            console.log('   Converted startDateStr:', startDateStr);
+            console.log('   Converted endDateStr:', endDateStr);
+            const profitSummary = await this.brandsService.getProfitSummary(startDateStr, endDateStr);
+            console.log('🔍 [Dashboard Service] Profit summary result:');
+            console.log('   Total Profit:', profitSummary.overall_summary?.total_profit);
+            console.log('   Profit Margin:', profitSummary.overall_summary?.profit_margin);
+            return {
+                totalProfit: profitSummary.overall_summary?.total_profit || 0,
+                profitMargin: profitSummary.overall_summary?.profit_margin || 0,
+            };
+        }
+        catch (error) {
+            console.error('Error calculating profit data for dashboard:', error);
+            return {
+                totalProfit: 0,
+                profitMargin: 0,
+            };
+        }
     }
     isSameDay(date1, date2) {
         return date1.getFullYear() === date2.getFullYear() &&

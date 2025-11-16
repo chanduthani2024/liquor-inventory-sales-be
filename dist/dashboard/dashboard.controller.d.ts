@@ -9,6 +9,8 @@ export declare class DashboardController {
             totalBrands: number;
             totalStockItems: number;
             lowStockCount: number;
+            totalProfit: number;
+            profitMargin: number;
         };
         topSellingBrands: any[];
         salesByBrand: any[];

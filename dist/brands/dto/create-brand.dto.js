@@ -22,6 +22,11 @@ __decorate([
 ], CreateBrandDto.prototype, "name", void 0);
 __decorate([
     (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateBrandDto.prototype, "brand_number", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)({ maxDecimalPlaces: 2 }),
     (0, class_validator_1.Min)(0),
     (0, class_transformer_1.Transform)(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value)),
@@ -83,6 +88,69 @@ __decorate([
     (0, class_transformer_1.Transform)(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value)),
     __metadata("design:type", Number)
 ], CreateBrandDto.prototype, "price_2l", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)({ maxDecimalPlaces: 2 }),
+    (0, class_validator_1.Min)(0),
+    (0, class_transformer_1.Transform)(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value)),
+    __metadata("design:type", Number)
+], CreateBrandDto.prototype, "actual_price_90ml", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)({ maxDecimalPlaces: 2 }),
+    (0, class_validator_1.Min)(0),
+    (0, class_transformer_1.Transform)(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value)),
+    __metadata("design:type", Number)
+], CreateBrandDto.prototype, "actual_price_180ml", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)({ maxDecimalPlaces: 2 }),
+    (0, class_validator_1.Min)(0),
+    (0, class_transformer_1.Transform)(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value)),
+    __metadata("design:type", Number)
+], CreateBrandDto.prototype, "actual_price_330ml", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)({ maxDecimalPlaces: 2 }),
+    (0, class_validator_1.Min)(0),
+    (0, class_transformer_1.Transform)(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value)),
+    __metadata("design:type", Number)
+], CreateBrandDto.prototype, "actual_price_375ml", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)({ maxDecimalPlaces: 2 }),
+    (0, class_validator_1.Min)(0),
+    (0, class_transformer_1.Transform)(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value)),
+    __metadata("design:type", Number)
+], CreateBrandDto.prototype, "actual_price_500ml", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)({ maxDecimalPlaces: 2 }),
+    (0, class_validator_1.Min)(0),
+    (0, class_transformer_1.Transform)(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value)),
+    __metadata("design:type", Number)
+], CreateBrandDto.prototype, "actual_price_650ml", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)({ maxDecimalPlaces: 2 }),
+    (0, class_validator_1.Min)(0),
+    (0, class_transformer_1.Transform)(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value)),
+    __metadata("design:type", Number)
+], CreateBrandDto.prototype, "actual_price_750ml", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)({ maxDecimalPlaces: 2 }),
+    (0, class_validator_1.Min)(0),
+    (0, class_transformer_1.Transform)(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value)),
+    __metadata("design:type", Number)
+], CreateBrandDto.prototype, "actual_price_1l", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)({ maxDecimalPlaces: 2 }),
+    (0, class_validator_1.Min)(0),
+    (0, class_transformer_1.Transform)(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value)),
+    __metadata("design:type", Number)
+], CreateBrandDto.prototype, "actual_price_2l", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),

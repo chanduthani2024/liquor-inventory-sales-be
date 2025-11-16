@@ -559,7 +559,7 @@ export class StockMovementsService {
         brand_id: entryDto.brand_id,
         size: entryDto.size,
         created_at: Between(startOfDay, endOfDay),
-        notes: Like('Manual entry%'), // Only get manual entries
+        // notes: Like('Manual entry%'), // Only get manual entries
       },
       order: { created_at: 'DESC' },
     });
@@ -599,7 +599,7 @@ export class StockMovementsService {
         quantity: entryDto.received_today,
         defective_quantity: 0,
         notes: `Manual entry - Received: ${entryDto.received_today} on ${entryDto.date}. ${entryDto.notes || ''}`.trim(),
-        created_at: new Date(`${entryDto.date}T23:59:00`), // Set to end of day
+        // Use current timestamp instead of hardcoded end of day
       });
       movements.push(await this.movementsRepository.save(receiptMovement));
     }
@@ -613,7 +613,7 @@ export class StockMovementsService {
         quantity: -entryDto.sales_quantity, // Negative for outgoing
         defective_quantity: 0,
         notes: `Manual entry - Sold: ${entryDto.sales_quantity} on ${entryDto.date}. ${entryDto.notes || ''}`.trim(),
-        created_at: new Date(`${entryDto.date}T23:59:00`), // Set to end of day
+        // Use current timestamp instead of hardcoded end of day
       });
       movements.push(await this.movementsRepository.save(saleMovement));
     }

@@ -9,11 +9,11 @@ const sale_item_entity_1 = require("./sales/sale-item.entity");
 const user_entity_1 = require("./auth/user.entity");
 const AppDataSource = new typeorm_1.DataSource({
     type: 'postgres',
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || 'db.wbmhdagvgnedroltowfw.supabase.co',
     port: parseInt(process.env.DB_PORT) || 5432,
     username: process.env.DB_USER || 'postgres',
-    password: process.env.DB_PASSWORD || 'chandu',
-    database: process.env.DB_NAME || 'wine_shop',
+    password: process.env.DB_PASSWORD || 'Chandu@saicharan@1',
+    database: process.env.DB_NAME || 'postgres',
     entities: [brand_entity_1.Brand, stock_entity_1.Stock, sale_entity_1.Sale, sale_item_entity_1.SaleItem, user_entity_1.User],
     synchronize: true,
 });

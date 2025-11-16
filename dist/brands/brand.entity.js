@@ -14,6 +14,7 @@ const typeorm_1 = require("typeorm");
 const stock_entity_1 = require("../stock/stock.entity");
 const sale_item_entity_1 = require("../sales/sale-item.entity");
 const alcohol_type_entity_1 = require("../alcohol-types/alcohol-type.entity");
+const brand_price_history_entity_1 = require("./brand-price-history.entity");
 var BottleSize;
 (function (BottleSize) {
     BottleSize["ML_90"] = "90ml";
@@ -37,6 +38,10 @@ __decorate([
     (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
 ], Brand.prototype, "name", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ unique: true, nullable: true, length: 50, comment: 'Unique brand number/SKU for inventory tracking' }),
+    __metadata("design:type", String)
+], Brand.prototype, "brand_number", void 0);
 __decorate([
     (0, typeorm_1.Column)('decimal', { precision: 10, scale: 2, nullable: true, default: null }),
     __metadata("design:type", Number)
@@ -74,6 +79,42 @@ __decorate([
     __metadata("design:type", Number)
 ], Brand.prototype, "price_2l", void 0);
 __decorate([
+    (0, typeorm_1.Column)('decimal', { precision: 10, scale: 2, nullable: true, default: null }),
+    __metadata("design:type", Number)
+], Brand.prototype, "actual_price_90ml", void 0);
+__decorate([
+    (0, typeorm_1.Column)('decimal', { precision: 10, scale: 2, nullable: true, default: null }),
+    __metadata("design:type", Number)
+], Brand.prototype, "actual_price_180ml", void 0);
+__decorate([
+    (0, typeorm_1.Column)('decimal', { precision: 10, scale: 2, nullable: true, default: null }),
+    __metadata("design:type", Number)
+], Brand.prototype, "actual_price_330ml", void 0);
+__decorate([
+    (0, typeorm_1.Column)('decimal', { precision: 10, scale: 2, nullable: true, default: null }),
+    __metadata("design:type", Number)
+], Brand.prototype, "actual_price_375ml", void 0);
+__decorate([
+    (0, typeorm_1.Column)('decimal', { precision: 10, scale: 2, nullable: true, default: null }),
+    __metadata("design:type", Number)
+], Brand.prototype, "actual_price_500ml", void 0);
+__decorate([
+    (0, typeorm_1.Column)('decimal', { precision: 10, scale: 2, nullable: true, default: null }),
+    __metadata("design:type", Number)
+], Brand.prototype, "actual_price_650ml", void 0);
+__decorate([
+    (0, typeorm_1.Column)('decimal', { precision: 10, scale: 2, nullable: true, default: null }),
+    __metadata("design:type", Number)
+], Brand.prototype, "actual_price_750ml", void 0);
+__decorate([
+    (0, typeorm_1.Column)('decimal', { precision: 10, scale: 2, nullable: true, default: null }),
+    __metadata("design:type", Number)
+], Brand.prototype, "actual_price_1l", void 0);
+__decorate([
+    (0, typeorm_1.Column)('decimal', { precision: 10, scale: 2, nullable: true, default: null }),
+    __metadata("design:type", Number)
+], Brand.prototype, "actual_price_2l", void 0);
+__decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], Brand.prototype, "description", void 0);
@@ -102,6 +143,10 @@ __decorate([
     (0, typeorm_1.OneToMany)(() => sale_item_entity_1.SaleItem, saleItem => saleItem.brand),
     __metadata("design:type", Array)
 ], Brand.prototype, "saleItems", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => brand_price_history_entity_1.BrandPriceHistory, priceHistory => priceHistory.brand),
+    __metadata("design:type", Array)
+], Brand.prototype, "priceHistory", void 0);
 exports.Brand = Brand = __decorate([
     (0, typeorm_1.Entity)('brands')
 ], Brand);

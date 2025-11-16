@@ -15,6 +15,8 @@ export declare class DashboardService {
             totalBrands: number;
             totalStockItems: number;
             lowStockCount: number;
+            totalProfit: number;
+            profitMargin: number;
         };
         topSellingBrands: any[];
         salesByBrand: any[];
@@ -62,5 +64,6 @@ export declare class DashboardService {
     private getComprehensiveTotalRevenue;
     private getComprehensiveTopSellingBrands;
     private getComprehensiveSalesByBrand;
+    private getProfitData;
     private isSameDay;
 }

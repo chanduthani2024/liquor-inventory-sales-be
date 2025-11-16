@@ -19,6 +19,7 @@ const tp_charges_module_1 = require("./tp-charges/tp-charges.module");
 const cash_reconciliation_module_1 = require("./cash-reconciliation/cash-reconciliation.module");
 const auth_module_1 = require("./auth/auth.module");
 const alcohol_types_module_1 = require("./alcohol-types/alcohol-types.module");
+const pdf_import_module_1 = require("./pdf-import/pdf-import.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -30,11 +31,11 @@ exports.AppModule = AppModule = __decorate([
             }),
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
-                host: process.env.DB_HOST || 'localhost',
+                host: process.env.DB_HOST || 'db.wbmhdagvgnedroltowfw.supabase.co',
                 port: parseInt(process.env.DB_PORT) || 5432,
                 username: process.env.DB_USER || 'postgres',
-                password: process.env.DB_PASSWORD || 'chandu',
-                database: process.env.DB_NAME || 'wine_shop',
+                password: process.env.DB_PASSWORD || 'Chandu@saicharan@1',
+                database: process.env.DB_NAME || 'postgres',
                 autoLoadEntities: true,
                 synchronize: true,
             }),
@@ -47,6 +48,7 @@ exports.AppModule = AppModule = __decorate([
             cash_reconciliation_module_1.CashReconciliationModule,
             auth_module_1.AuthModule,
             alcohol_types_module_1.AlcoholTypesModule,
+            pdf_import_module_1.PdfImportModule,
         ],
     })
 ], AppModule);

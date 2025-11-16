@@ -7,6 +7,10 @@ export class CreateBrandDto {
   name: string;
 
   @IsOptional()
+  @IsString()
+  brand_number?: string | null;
+
+  @IsOptional()
   @IsNumber({ maxDecimalPlaces: 2 })
   @Min(0)
   @Transform(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value))
@@ -59,6 +63,61 @@ export class CreateBrandDto {
   @Min(0)
   @Transform(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value))
   price_2l?: number | null;
+
+  // Actual/Cost prices (what owner pays to supplier)
+  @IsOptional()
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @Min(0)
+  @Transform(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value))
+  actual_price_90ml?: number | null;
+
+  @IsOptional()
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @Min(0)
+  @Transform(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value))
+  actual_price_180ml?: number | null;
+
+  @IsOptional()
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @Min(0)
+  @Transform(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value))
+  actual_price_330ml?: number | null;
+
+  @IsOptional()
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @Min(0)
+  @Transform(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value))
+  actual_price_375ml?: number | null;
+
+  @IsOptional()
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @Min(0)
+  @Transform(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value))
+  actual_price_500ml?: number | null;
+
+  @IsOptional()
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @Min(0)
+  @Transform(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value))
+  actual_price_650ml?: number | null;
+
+  @IsOptional()
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @Min(0)
+  @Transform(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value))
+  actual_price_750ml?: number | null;
+
+  @IsOptional()
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @Min(0)
+  @Transform(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value))
+  actual_price_1l?: number | null;
+
+  @IsOptional()
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @Min(0)
+  @Transform(({ value }) => value === '' || value === null || value === undefined ? null : parseFloat(value))
+  actual_price_2l?: number | null;
 
   @IsString()
   @IsOptional()

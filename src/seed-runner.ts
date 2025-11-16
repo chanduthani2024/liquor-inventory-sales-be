@@ -8,11 +8,11 @@ import { User } from './auth/user.entity';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
-  host: process.env.DB_HOST || 'localhost',
+  host: process.env.DB_HOST || 'db.wbmhdagvgnedroltowfw.supabase.co',
   port: parseInt(process.env.DB_PORT) || 5432,
   username: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'chandu',
-  database: process.env.DB_NAME || 'wine_shop',
+  password: process.env.DB_PASSWORD || 'Chandu@saicharan@1',
+  database: process.env.DB_NAME || 'postgres',
   entities: [Brand, Stock, Sale, SaleItem, User],
   synchronize: true,
 });

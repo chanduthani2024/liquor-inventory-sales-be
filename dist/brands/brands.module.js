@@ -12,12 +12,19 @@ const typeorm_1 = require("@nestjs/typeorm");
 const brands_service_1 = require("./brands.service");
 const brands_controller_1 = require("./brands.controller");
 const brand_entity_1 = require("./brand.entity");
+const brand_price_history_entity_1 = require("./brand-price-history.entity");
+const sale_item_entity_1 = require("../sales/sale-item.entity");
+const sale_entity_1 = require("../sales/sale.entity");
+const stock_movements_module_1 = require("../stock-movements/stock-movements.module");
 let BrandsModule = class BrandsModule {
 };
 exports.BrandsModule = BrandsModule;
 exports.BrandsModule = BrandsModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([brand_entity_1.Brand])],
+        imports: [
+            typeorm_1.TypeOrmModule.forFeature([brand_entity_1.Brand, brand_price_history_entity_1.BrandPriceHistory, sale_item_entity_1.SaleItem, sale_entity_1.Sale]),
+            (0, common_1.forwardRef)(() => stock_movements_module_1.StockMovementsModule),
+        ],
         controllers: [brands_controller_1.BrandsController],
         providers: [brands_service_1.BrandsService],
         exports: [brands_service_1.BrandsService],

@@ -1,6 +1,7 @@
 import { Stock } from '../stock/stock.entity';
 import { SaleItem } from '../sales/sale-item.entity';
 import { AlcoholType } from '../alcohol-types/alcohol-type.entity';
+import { BrandPriceHistory } from './brand-price-history.entity';
 export declare enum BottleSize {
     ML_90 = "90ml",
     ML_180 = "180ml",
@@ -15,6 +16,7 @@ export declare enum BottleSize {
 export declare class Brand {
     id: number;
     name: string;
+    brand_number: string | null;
     price_90ml: number | null;
     price_180ml: number | null;
     price_375ml: number | null;
@@ -24,6 +26,15 @@ export declare class Brand {
     price_650ml: number | null;
     price_1l: number | null;
     price_2l: number | null;
+    actual_price_90ml: number | null;
+    actual_price_180ml: number | null;
+    actual_price_330ml: number | null;
+    actual_price_375ml: number | null;
+    actual_price_500ml: number | null;
+    actual_price_650ml: number | null;
+    actual_price_750ml: number | null;
+    actual_price_1l: number | null;
+    actual_price_2l: number | null;
     description: string;
     alcohol_type_id: number;
     alcoholType: AlcoholType;
@@ -31,4 +42,5 @@ export declare class Brand {
     updated_at: Date;
     stocks: Stock[];
     saleItems: SaleItem[];
+    priceHistory: BrandPriceHistory[];
 }

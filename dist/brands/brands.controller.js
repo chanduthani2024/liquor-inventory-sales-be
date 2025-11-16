@@ -35,8 +35,9 @@ let BrandsController = class BrandsController {
     findOne(id) {
         return this.brandsService.findOne(+id);
     }
-    async update(id, updateBrandDto) {
-        const brand = await this.brandsService.update(+id, updateBrandDto);
+    async update(id, updateBrandDto, req) {
+        const userId = req.user?.id;
+        const brand = await this.brandsService.update(+id, updateBrandDto, userId);
         return {
             success: true,
             message: 'Brand updated successfully',
@@ -55,6 +56,34 @@ let BrandsController = class BrandsController {
     }
     getPriceForSize(id, size) {
         return this.brandsService.getPriceForSize(+id, size);
+    }
+    async getAllPriceHistory(brandId, size, limit) {
+        const history = await this.brandsService.getPriceHistory(brandId ? +brandId : undefined, size, limit ? +limit : 50);
+        return {
+            success: true,
+            data: history
+        };
+    }
+    async getBrandPriceHistory(id, size) {
+        const history = await this.brandsService.getBrandPriceHistory(+id, size);
+        return {
+            success: true,
+            data: history
+        };
+    }
+    async getDailyProfitReport(date, brandId) {
+        const report = await this.brandsService.getDailyProfitReport(date, brandId ? +brandId : undefined);
+        return {
+            success: true,
+            data: report
+        };
+    }
+    async getProfitSummary(startDate, endDate, brandId) {
+        const summary = await this.brandsService.getProfitSummary(startDate, endDate, brandId ? +brandId : undefined);
+        return {
+            success: true,
+            data: summary
+        };
     }
 };
 exports.BrandsController = BrandsController;
@@ -83,8 +112,9 @@ __decorate([
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
+    __param(2, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_brand_dto_1.UpdateBrandDto]),
+    __metadata("design:paramtypes", [String, update_brand_dto_1.UpdateBrandDto, Object]),
     __metadata("design:returntype", Promise)
 ], BrandsController.prototype, "update", null);
 __decorate([
@@ -109,6 +139,40 @@ __decorate([
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], BrandsController.prototype, "getPriceForSize", null);
+__decorate([
+    (0, common_1.Get)('price-history/all'),
+    __param(0, (0, common_1.Query)('brandId')),
+    __param(1, (0, common_1.Query)('size')),
+    __param(2, (0, common_1.Query)('limit')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, String]),
+    __metadata("design:returntype", Promise)
+], BrandsController.prototype, "getAllPriceHistory", null);
+__decorate([
+    (0, common_1.Get)(':id/price-history'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Query)('size')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", Promise)
+], BrandsController.prototype, "getBrandPriceHistory", null);
+__decorate([
+    (0, common_1.Get)('profit-report/daily'),
+    __param(0, (0, common_1.Query)('date')),
+    __param(1, (0, common_1.Query)('brandId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", Promise)
+], BrandsController.prototype, "getDailyProfitReport", null);
+__decorate([
+    (0, common_1.Get)('profit-report/summary'),
+    __param(0, (0, common_1.Query)('startDate')),
+    __param(1, (0, common_1.Query)('endDate')),
+    __param(2, (0, common_1.Query)('brandId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, String]),
+    __metadata("design:returntype", Promise)
+], BrandsController.prototype, "getProfitSummary", null);
 exports.BrandsController = BrandsController = __decorate([
     (0, common_1.Controller)('brands'),
     __metadata("design:paramtypes", [brands_service_1.BrandsService])

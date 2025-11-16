@@ -417,7 +417,6 @@ let StockMovementsService = class StockMovementsService {
                 brand_id: entryDto.brand_id,
                 size: entryDto.size,
                 created_at: (0, typeorm_2.Between)(startOfDay, endOfDay),
-                notes: (0, typeorm_2.Like)('Manual entry%'),
             },
             order: { created_at: 'DESC' },
         });
@@ -444,7 +443,6 @@ let StockMovementsService = class StockMovementsService {
                 quantity: entryDto.received_today,
                 defective_quantity: 0,
                 notes: `Manual entry - Received: ${entryDto.received_today} on ${entryDto.date}. ${entryDto.notes || ''}`.trim(),
-                created_at: new Date(`${entryDto.date}T23:59:00`),
             });
             movements.push(await this.movementsRepository.save(receiptMovement));
         }
@@ -456,7 +454,6 @@ let StockMovementsService = class StockMovementsService {
                 quantity: -entryDto.sales_quantity,
                 defective_quantity: 0,
                 notes: `Manual entry - Sold: ${entryDto.sales_quantity} on ${entryDto.date}. ${entryDto.notes || ''}`.trim(),
-                created_at: new Date(`${entryDto.date}T23:59:00`),
             });
             movements.push(await this.movementsRepository.save(saleMovement));
         }
