@@ -19,6 +19,12 @@ const AppDataSource = new typeorm_1.DataSource({
     ssl: {
         rejectUnauthorized: false,
     },
+    extra: {
+        family: 4,
+        connectionTimeoutMillis: 10000,
+        query_timeout: 10000,
+        statement_timeout: 10000,
+    },
 });
 async function runSeed() {
     try {

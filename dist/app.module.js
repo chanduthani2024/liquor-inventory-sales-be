@@ -41,6 +41,12 @@ exports.AppModule = AppModule = __decorate([
                 ssl: {
                     rejectUnauthorized: false,
                 },
+                extra: {
+                    family: 4,
+                    connectionTimeoutMillis: 10000,
+                    query_timeout: 10000,
+                    statement_timeout: 10000,
+                },
             }),
             brands_module_1.BrandsModule,
             stock_module_1.StockModule,
