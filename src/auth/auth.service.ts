@@ -35,28 +35,22 @@ export class AuthService {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    // Create user
+    // Create user with is_active set to false (requires admin approval)
     const user = this.userRepository.create({
       username,
       password: hashedPassword,
+      is_active: false, // New users are inactive until admin approves
     });
 
     const savedUser = await this.userRepository.save(user);
 
-    // Generate JWT token
-    const token = this.jwtService.sign({ 
-      sub: savedUser.id, 
-      username: savedUser.username 
-    });
-
     return {
       success: true,
-      message: 'User registered successfully',
+      message: 'Registration successful. Admin will contact you soon to activate your account.',
       user: {
         id: savedUser.id,
         username: savedUser.username,
       },
-      token,
     };
   }
 
@@ -67,6 +61,7 @@ export class AuthService {
     const user = await this.userRepository.findOne({
       where: { username }
     });
+    console.log('User found during login:', user);
 
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');

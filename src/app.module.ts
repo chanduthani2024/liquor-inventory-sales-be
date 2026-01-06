@@ -38,6 +38,16 @@ import { PdfImportModule } from './pdf-import/pdf-import.module';
         statement_timeout: 10000,
       },
     }),
+    // TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   host: process.env.DB_HOST || 'localhost',
+    //   port: parseInt(process.env.DB_PORT) || 5432,
+    //   username: process.env.DB_USER || 'postgres',
+    //   password: process.env.DB_PASSWORD || 'chandu',
+    //   database: process.env.DB_NAME || 'postgres',
+    //   autoLoadEntities: true,
+    //   synchronize: true, // Set to false in production
+    // }),
     BrandsModule,
     StockModule,
     SalesModule,

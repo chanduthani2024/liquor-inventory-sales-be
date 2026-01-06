@@ -27,3 +27,25 @@ export const AppDataSource = new DataSource({
     statement_timeout: 10000,
   },
 });
+// export const AppDataSource = new DataSource({
+//   type: 'postgres',
+//   host: 'localhost',
+//   port: 5432,
+//   username: 'postgres',
+//   password: 'chandu',
+//   database: 'postgres',
+//   entities: [Brand, BrandPriceHistory, Stock, Sale, SaleItem],
+//   migrations: ['src/migrations/*.ts'],
+//   synchronize: false, // Important: set to false for migrations
+//   logging: false,
+//   ssl: {
+//     rejectUnauthorized: false,
+//   },
+//   extra: {
+//     // Force IPv4 to avoid IPv6 connection issues
+//     family: 4,
+//     connectionTimeoutMillis: 10000,
+//     query_timeout: 10000,
+//     statement_timeout: 10000,
+//   },
+// });
