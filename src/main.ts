@@ -9,7 +9,8 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:3000',
-      'http://172.22.31.39:3000', // Your local network IP
+      'http://172.22.31.39:3000',
+      'http://43.204.130.122:3001:3000',
       /^http:\/\/192\.168\.\d{1,3}\.\d{1,3}:3000$/, // Any 192.168.x.x network
       /^http:\/\/172\.\d{1,3}\.\d{1,3}\.\d{1,3}:3000$/, // Any 172.x.x.x network
       /^http:\/\/10\.\d{1,3}\.\d{1,3}\.\d{1,3}:3000$/, // Any 10.x.x.x network
