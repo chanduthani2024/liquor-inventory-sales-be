@@ -7,16 +7,9 @@ async function bootstrap() {
   
   // Enable CORS for frontend - allow network access
   app.enableCors({
-    origin: [
-      'http://localhost:3000',
-      'http://172.22.31.39:3000',
-      'http://43.204.130.122:3001',
-      /^http:\/\/192\.168\.\d{1,3}\.\d{1,3}:3000$/, // Any 192.168.x.x network
-      /^http:\/\/172\.\d{1,3}\.\d{1,3}\.\d{1,3}:3000$/, // Any 172.x.x.x network
-      /^http:\/\/10\.\d{1,3}\.\d{1,3}\.\d{1,3}:3000$/, // Any 10.x.x.x network
-    ],
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
+    allowedHeaders: 'Content-Type, Authorization',
   });
   
   // Enable validation pipes
