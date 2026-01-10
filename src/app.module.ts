@@ -1,4 +1,4 @@
-import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BrandsModule } from './brands/brands.module';
@@ -11,7 +11,6 @@ import { CashReconciliationModule } from './cash-reconciliation/cash-reconciliat
 import { AuthModule } from './auth/auth.module';
 import { AlcoholTypesModule } from './alcohol-types/alcohol-types.module';
 import { PdfImportModule } from './pdf-import/pdf-import.module';
-import { CorsMiddleware } from './cors.middleware';
 import { HealthController } from './health.controller';
 
 @Module({
@@ -63,10 +62,4 @@ import { HealthController } from './health.controller';
   ],
   controllers: [HealthController],
 })
-export class AppModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(CorsMiddleware)
-      .forRoutes({ path: '*', method: RequestMethod.ALL });
-  }
-}
+export class AppModule {}

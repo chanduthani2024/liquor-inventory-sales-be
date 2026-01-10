@@ -20,6 +20,12 @@ let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
+    handleOptions(res) {
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Accept, X-Requested-With, Origin');
+        res.sendStatus(200);
+    }
     async register(registerDto) {
         return await this.authService.register(registerDto);
     }
@@ -31,6 +37,13 @@ let AuthController = class AuthController {
     }
 };
 exports.AuthController = AuthController;
+__decorate([
+    (0, common_1.Options)('*'),
+    __param(0, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "handleOptions", null);
 __decorate([
     (0, common_1.Post)('register'),
     __param(0, (0, common_1.Body)()),

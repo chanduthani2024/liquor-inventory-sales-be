@@ -1,4 +1,5 @@
-import { Controller, Post, Body, Get, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, Get, UseGuards, Options, Res } from '@nestjs/common';
+import { Response } from 'express';
 import { AuthService } from './auth.service';
 import { RegisterDto, LoginDto } from './dto/auth.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
@@ -6,6 +7,14 @@ import { JwtAuthGuard } from './jwt-auth.guard';
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
+
+  @Options('*')
+  handleOptions(@Res() res: Response) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Accept, X-Requested-With, Origin');
+    res.sendStatus(200);
+  }
 
   @Post('register')
   async register(@Body() registerDto: RegisterDto) {
