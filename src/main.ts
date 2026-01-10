@@ -7,9 +7,28 @@ async function bootstrap() {
   
   // Enable CORS for frontend - allow network access
   app.enableCors({
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: 'Content-Type, Authorization',
+    origin: [
+      'http://localhost:3000',
+      'http://127.0.0.1:3000',
+      'http://43.204.130.122:3000',
+      'http://43.204.130.122:5000',
+      'http://43.204.130.122',
+      '*' // Allow all origins in production (you can restrict this later)
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
+    allowedHeaders: [
+      'Content-Type', 
+      'Authorization', 
+      'X-Requested-With',
+      'Accept',
+      'Origin',
+      'Access-Control-Allow-Origin',
+      'Access-Control-Allow-Headers',
+      'Access-Control-Allow-Methods'
+    ],
+    credentials: true,
+    optionsSuccessStatus: 200,
+    preflightContinue: false,
   });
   
   // Enable validation pipes
@@ -18,6 +37,6 @@ async function bootstrap() {
   // Listen on all network interfaces
   await app.listen(3001, '0.0.0.0');
   console.log('Wine Shop Backend is running on http://0.0.0.0:3001');
-  console.log('Network access: http://172.22.31.39:3001');
+  console.log('Network access: http://43.204.130.122:3001');
 }
 bootstrap();

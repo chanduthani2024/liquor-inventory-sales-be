@@ -20,7 +20,14 @@ const cash_reconciliation_module_1 = require("./cash-reconciliation/cash-reconci
 const auth_module_1 = require("./auth/auth.module");
 const alcohol_types_module_1 = require("./alcohol-types/alcohol-types.module");
 const pdf_import_module_1 = require("./pdf-import/pdf-import.module");
+const cors_middleware_1 = require("./cors.middleware");
+const health_controller_1 = require("./health.controller");
 let AppModule = class AppModule {
+    configure(consumer) {
+        consumer
+            .apply(cors_middleware_1.CorsMiddleware)
+            .forRoutes({ path: '*', method: common_1.RequestMethod.ALL });
+    }
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
@@ -59,6 +66,7 @@ exports.AppModule = AppModule = __decorate([
             alcohol_types_module_1.AlcoholTypesModule,
             pdf_import_module_1.PdfImportModule,
         ],
+        controllers: [health_controller_1.HealthController],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
